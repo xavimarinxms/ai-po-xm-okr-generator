@@ -119,7 +119,10 @@ function DemoPageInner() {
             <span className="text-sm font-semibold text-gray-900">OKR Generator</span>
             <span className="hidden sm:inline text-xs text-gray-500">by <a href="https://xavimarin.net" target="_blank" rel="noopener noreferrer" className="hover:text-brand-600 transition-colors">Xavi Marín</a></span>
           </div>
-          <Link href="/" className="text-xs font-medium text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">← Home</Link>
+          <div className="flex items-center gap-2">
+            <a href="https://ai-po-xavi-marin-suite.vercel.app" target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">← AI PO Suite</a>
+            <Link href="/" className="text-xs font-medium text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-lg px-3 py-1.5 transition-colors">← Home</Link>
+          </div>
         </div>
       </nav>}
 
