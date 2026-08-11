@@ -4,6 +4,48 @@ import { OKRInput } from '@/types';
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
+/**
+ * Llama sometimes returns raw, unescaped control characters (literal
+ * newlines, tabs) inside JSON string values instead of \n / \t. That's
+ * invalid JSON and makes JSON.parse throw "Bad control character in
+ * string literal". This escapes control characters that appear *inside*
+ * string literals only, leaving the JSON structure (outside strings)
+ * untouched.
+ */
+function safeJsonParse<T>(text: string): T {
+  let inString = false;
+  let escaped = false;
+  let result = '';
+  for (const ch of text) {
+    if (inString) {
+      if (escaped) {
+        result += ch;
+        escaped = false;
+      } else if (ch === '\\') {
+        result += ch;
+        escaped = true;
+      } else if (ch === '"') {
+        result += ch;
+        inString = false;
+      } else if (ch === '\n') {
+        result += '\\n';
+      } else if (ch === '\r') {
+        result += '\\r';
+      } else if (ch === '\t') {
+        result += '\\t';
+      } else if (ch.charCodeAt(0) < 0x20) {
+        // Drop other stray control characters.
+      } else {
+        result += ch;
+      }
+    } else {
+      result += ch;
+      if (ch === '"') inString = true;
+    }
+  }
+  return JSON.parse(result) as T;
+}
+
 export async function POST(req: NextRequest) {
   const input: OKRInput = await req.json();
 
@@ -63,7 +105,7 @@ Return ONLY valid JSON in this exact format, no markdown:
 
     const raw = completion.choices[0].message.content ?? '{}';
     const clean = raw.replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(clean);
+    const parsed = safeJsonParse<Record<string, unknown>>(clean);
     return NextResponse.json(parsed);
   } catch (err) {
     console.error(err);
