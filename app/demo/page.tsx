@@ -186,7 +186,7 @@ function DemoPageInner() {
       <footer className="border-t border-gray-200 bg-white mt-16">
         <div className="max-w-5xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
           <span>Built by <a href="https://xavimarin.net" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors">Xavi Marín</a> · Progress saved locally in your browser</span>
-          <span>PO Toolkit #11 of 13</span>
+          <span>PO Toolkit #10 of 12</span>
         </div>
       </footer>
     </div>
