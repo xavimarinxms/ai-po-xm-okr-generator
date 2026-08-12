@@ -136,7 +136,7 @@ function DemoPageInner() {
             <h1 className="text-2xl font-bold text-gray-900 mb-1">OKR Generator + Tracker</h1>
             <p className="text-sm text-gray-500">Generate strategic OKRs and track progress across the quarter.</p>
           </div>
-          <div className="flex gap-2 flex-wrap">
+          <div data-tour="export" className="flex gap-2 flex-wrap">
             {objectives.length > 0 && (
               <>
                 <button onClick={exportMd} className="text-xs font-medium text-gray-600 bg-white hover:bg-gray-50 border border-gray-300 rounded-lg px-3 py-1.5 transition-colors">
@@ -179,7 +179,9 @@ function DemoPageInner() {
         )}
 
         {tab === 'track' && objectives.length > 0 && (
-          <OKRTracker objectives={objectives} onProgressChange={updateProgress} />
+          <div data-tour="results">
+            <OKRTracker objectives={objectives} onProgressChange={updateProgress} />
+          </div>
         )}
       </main>
 

@@ -18,10 +18,10 @@ export default function OKRForm({ values, onChange, onSubmit, loading }: Props) 
   const labelCls = 'block text-xs font-medium text-gray-700 mb-1.5';
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-5">
+    <div data-tour="input" className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-5">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-semibold text-gray-900">Product context</h2>
-        <button onClick={() => onChange(SAMPLE_INPUT)}
+        <button data-tour="sample" onClick={() => onChange(SAMPLE_INPUT)}
           className="text-xs font-medium text-brand-700 bg-brand-50 hover:bg-brand-100 border border-brand-300 rounded-lg px-3 py-1.5 transition-colors">
           ✨ Sample data
         </button>
@@ -59,7 +59,7 @@ export default function OKRForm({ values, onChange, onSubmit, loading }: Props) 
           placeholder="Team size, budget limits, tech debt…" className={inputCls} />
       </div>
 
-      <button onClick={onSubmit}
+      <button data-tour="run" onClick={onSubmit}
         disabled={loading || !values.productName || !values.mission || !values.quarter || !values.teamFocus}
         className="w-full bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold rounded-xl py-3 px-6 transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
         {loading ? (
