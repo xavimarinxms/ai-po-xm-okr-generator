@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const HOW_IT_WORKS = [
   { step: '01', title: 'Describe your product context', desc: 'Enter your product mission, quarter, team focus and constraints. The more specific, the more actionable the OKRs.' },
-  { step: '02', title: 'Generate in seconds', desc: 'Llama 3.3 produces 3 Objectives with 3 Key Results each — quantitative, measurable, outcome-oriented. Not tasks or vanity metrics.' },
+  { step: '02', title: 'Generate in seconds', desc: 'GPT-OSS 120B produces 3 Objectives with 3 Key Results each — quantitative, measurable, outcome-oriented. Not tasks or vanity metrics.' },
   { step: '03', title: 'Track progress all quarter', desc: 'Update KR progress with a slider. See overall Objective health at a glance. Export to Markdown at any time.' },
 ];
 
